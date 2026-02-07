@@ -2,7 +2,7 @@ from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel
 from passlib.context import CryptContext
 from jose import jwt
-import pyodbc
+#import pyodbc
 import uvicorn
 import pymssql
 # ---------------- APP ----------------
@@ -14,13 +14,13 @@ ALGORITHM = "HS256"
 pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
 
 # ---------------- DATABASE ----------------
-conn_str = (
-    "DRIVER={ODBC Driver 17 for SQL Server};"
-    "SERVER=dhvanit.mssql.somee.com;"
-    "DATABASE=dhvanit;"
-    "UID=patelkano_SQLLogin_1;"
-    "PWD=m44uaudal7;"
-)
+#conn_str = (
+#    "DRIVER={ODBC Driver 17 for SQL Server};"
+#    "SERVER=dhvanit.mssql.somee.com;"
+#    "DATABASE=dhvanit;"
+#    "UID=patelkano_SQLLogin_1;"
+#    "PWD=m44uaudal7;"
+#)
 
 def get_db():
     return pymssql.connect(
@@ -116,4 +116,5 @@ def login_user(data: LoginRequest):
 # ---------------- DIRECT RUN ----------------
 if __name__ == "__main__":
     uvicorn.run(app, host="0.0.0.0", port=8000)
+
 
