@@ -53,7 +53,7 @@ def register_user(data: RegisterRequest):
 
         # Check user already exists
         cursor.execute(
-            "SELECT id FROM users WHERE email = ?",
+            "SELECT id FROM users WHERE email = %s",
             (data.email,)
         )
         if cursor.fetchone():
@@ -65,7 +65,7 @@ def register_user(data: RegisterRequest):
 
         # Insert user
         cursor.execute(
-            "INSERT INTO users (email, password) VALUES (?, ?)",
+            "INSERT INTO users (email, password) VALUES (%s, %s)",
             (data.email, hashed_password)
         )
         conn.commit()
@@ -116,5 +116,6 @@ def login_user(data: LoginRequest):
 # ---------------- DIRECT RUN ----------------
 if __name__ == "__main__":
     uvicorn.run(app, host="0.0.0.0", port=8000)
+
 
 
