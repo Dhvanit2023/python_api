@@ -4,7 +4,7 @@ from passlib.context import CryptContext
 from jose import jwt
 import pyodbc
 import uvicorn
-
+import pymssql
 # ---------------- APP ----------------
 app = FastAPI()
 
@@ -23,7 +23,12 @@ conn_str = (
 )
 
 def get_db():
-    return pyodbc.connect(conn_str)
+    return pymssql.connect(
+        server="dhvanit.mssql.somee.com",
+        user="patelkano_SQLLogin_1",
+        password="m44uaudal7",
+        database="dhvanit"
+    )
 
 # ---------------- MODELS ----------------
 class LoginRequest(BaseModel):
@@ -111,3 +116,4 @@ def login_user(data: LoginRequest):
 # ---------------- DIRECT RUN ----------------
 if __name__ == "__main__":
     uvicorn.run(app, host="0.0.0.0", port=8000)
+
