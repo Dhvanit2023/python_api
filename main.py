@@ -12,7 +12,7 @@ app = FastAPI()
 SECRET_KEY = "mysecretkey"
 ALGORITHM = "HS256"
 pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
-
+#fianl
 # ---------------- DATABASE ----------------
 #conn_str = (
 #    "DRIVER={ODBC Driver 17 for SQL Server};"
@@ -116,6 +116,7 @@ def login_user(data: LoginRequest):
 # ---------------- DIRECT RUN ----------------
 if __name__ == "__main__":
     uvicorn.run(app, host="0.0.0.0", port=8000)
+
 
 
 
