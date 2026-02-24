@@ -9,7 +9,7 @@ import pymssql
 app = FastAPI()
 
 # ---------------- SECURITY ----------------
-SECRET_KEY = "mysecretkey"
+SECRET_KEY = ""
 ALGORITHM = "HS256"
 pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
 #fianl
@@ -19,14 +19,14 @@ pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
 #    "SERVER=dhvanit.mssql.somee.com;"
 #    "DATABASE=dhvanit;"
 #    "UID=patelkano_SQLLogin_1;"
-#    "PWD=m44uaudal7;"
+#    "PWD=;"
 #)
 
 def get_db():
     return pymssql.connect(
         server="dhvanit.mssql.somee.com",
         user="patelkano_SQLLogin_1",
-        password="m44uaudal7",
+        password="",
         database="dhvanit"
     )
 
